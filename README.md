@@ -12,10 +12,22 @@
 ## Build
 
 ```sh
-nim c -d:release tsvcsv.nim
+nim c tsvcsv.nim
 ```
 
-This generates the executable `./tsvcsv`.
+This project includes [config.nims](/home/akimoto/program/nim/tsvcsv/config.nims), so the default build already uses:
+
+- `-d:release`
+- `--opt:speed`
+- `--passL:-s`
+
+This generates the stripped executable `./tsvcsv`.
+
+If you want to override the project config explicitly, you can still run:
+
+```sh
+nim c -d:release --opt:speed --passL:-s tsvcsv.nim
+```
 
 ## Usage
 
@@ -46,6 +58,7 @@ cat sample.csv | ./tsvcsv
 
 ## Files
 
+- `config.nims`: default Nim build settings for release, speed, and stripping
 - `tsvcsv.nim`: source code
 - `sample.csv`: CSV example input
 - `sample.tsv`: TSV example input
